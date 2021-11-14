@@ -66,15 +66,7 @@ public class Restaurant {
         return name;
     }
     public int totalPrice(ArrayList<String> itemNames){
-        int totalprice=0;
-        for(String currItemName : itemNames) {
-            for (Item currItemInMenu : menu) {
-                if (currItemInMenu.getName().equals(currItemName)){
-                    totalprice=totalprice+currItemInMenu.getPrice();
-                }
-            }
-        }
-        return totalprice;
+        return -1;
     }
 
 }

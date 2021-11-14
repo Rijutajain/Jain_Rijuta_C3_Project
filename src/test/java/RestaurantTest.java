@@ -14,6 +14,13 @@ class RestaurantTest {
     Restaurant restaurant;
     LocalTime openingTime = LocalTime.parse("10:30:00");
     LocalTime closingTime = LocalTime.parse("22:00:00");
+    public Restaurant RestaurantInformation(){
+        Restaurant restaurant=new Restaurant("Pumpkin Tales","Chennai", LocalTime.parse("12:00:00"),LocalTime.parse("23:00:00"));
+        restaurant.addToMenu("Sweet corn soup",119);
+        restaurant.addToMenu("Vegetable lasagne", 269);
+        restaurant.addToMenu("Alfredo pasta",110);
+        return restaurant;
+    }
     @Test
     public void is_restaurant_open_should_return_true_if_time_is_between_opening_and_closing_time(){
         restaurant =new Restaurant("Amelie's cafe","Chennai",openingTime,
@@ -65,21 +72,15 @@ class RestaurantTest {
     }
     @Test
     public void if_user_selects_no_item_totalPrice_should_be_zero(){
-        Restaurant restaurant=new Restaurant("Pumpkin Tales","Chennai", LocalTime.parse("12:00:00"),LocalTime.parse("23:00:00"));
-        restaurant.addToMenu("Sweet corn soup",119);
-        restaurant.addToMenu("Vegetable lasagne", 269);
-        restaurant.addToMenu("Alfredo pasta",110);
 
+             Restaurant restaurant=RestaurantInformation();
         ArrayList<String> itemList=new ArrayList<String>();
         assertEquals(0,restaurant.totalPrice(itemList));
     }
     @Test
     public void  if_user_selects_some_items_totalPrice_should_be_non_zero(){
-        Restaurant restaurant=new Restaurant("Pumpkin Tales","Chennai", LocalTime.parse("12:00:00"),LocalTime.parse("23:00:00"));
-        restaurant.addToMenu("Sweet corn soup",119);
-        restaurant.addToMenu("Vegetable lasagne", 269);
-        restaurant.addToMenu("Alfredo pasta",110);
 
+        Restaurant restaurant=RestaurantInformation();
         ArrayList<String> itemList=new ArrayList<String>();
         itemList.add("Sweet corn soup");
         itemList.add("Alfredo pasta");
