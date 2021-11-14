@@ -63,5 +63,28 @@ class RestaurantTest {
         assertThrows(itemNotFoundException.class,
                 ()->restaurant.removeFromMenu("French fries"));
     }
+    @Test
+    public void if_user_selects_no_item_totalPrice_should_be_zero(){
+        Restaurant restaurant=new Restaurant("Pumpkin Tales","Chennai", LocalTime.parse("12:00:00"),LocalTime.parse("23:00:00"));
+        restaurant.addToMenu("Sweet corn soup",119);
+        restaurant.addToMenu("Vegetable lasagne", 269);
+        restaurant.addToMenu("Alfredo pasta",110);
+
+        ArrayList<String> itemList=new ArrayList<String>();
+        assertEquals(0,restaurant.totalPrice(itemList));
+    }
+    @Test
+    public void  if_user_selects_some_items_totalPrice_should_be_non_zero(){
+        Restaurant restaurant=new Restaurant("Pumpkin Tales","Chennai", LocalTime.parse("12:00:00"),LocalTime.parse("23:00:00"));
+        restaurant.addToMenu("Sweet corn soup",119);
+        restaurant.addToMenu("Vegetable lasagne", 269);
+        restaurant.addToMenu("Alfredo pasta",110);
+
+        ArrayList<String> itemList=new ArrayList<String>();
+        itemList.add("Sweet corn soup");
+        itemList.add("Alfredo pasta");
+        assertEquals(229,restaurant.totalPrice(itemList));
+    }
+
 
 }

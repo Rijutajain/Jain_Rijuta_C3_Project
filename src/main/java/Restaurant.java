@@ -65,6 +65,8 @@ public class Restaurant {
 
         return name;
     }
-
+    public int totalPrice(ArrayList<String> itemNames){
+        return -1;
+    }
 
 }
